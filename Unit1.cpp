@@ -62,7 +62,7 @@ void __fastcall TForm1::paddle2upTimer(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::paddle2downTimer(TObject *Sender)
 {
-  if(paddle1->Top+paddle1->Height <= background->Height-10) paddle2->Top += 10;
+  if(paddle2->Top+paddle2->Height <= background->Height-10) paddle2->Top += 10;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
