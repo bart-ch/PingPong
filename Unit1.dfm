@@ -1,9 +1,9 @@
 object Form1: TForm1
-  Left = 192
-  Top = 125
-  Width = 1044
-  Height = 540
-  Caption = 'Form1'
+  Left = 201
+  Top = 147
+  Width = 1114
+  Height = 501
+  Caption = 'PingPong by Bartek'
   Color = clBtnFace
   UseDockManager = True
   DockSite = True
@@ -20,17 +20,18 @@ object Form1: TForm1
   object background: TShape
     Left = 0
     Top = 0
-    Width = 1028
-    Height = 501
+    Width = 1098
+    Height = 462
     Align = alClient
     Brush.Color = clMedGray
   end
   object ball: TImage
-    Left = 496
-    Top = 232
+    Left = 536
+    Top = 224
     Width = 32
     Height = 32
     AutoSize = True
+    Enabled = False
     Picture.Data = {
       07544269746D6170360C0000424D360C00000000000036000000280000002000
       0000200000000100180000000000000C0000220B0000220B0000000000000000
@@ -134,11 +135,12 @@ object Form1: TForm1
     Transparent = True
   end
   object paddle1: TImage
-    Left = 16
-    Top = 200
+    Left = 32
+    Top = 152
     Width = 20
     Height = 191
     AutoSize = True
+    Enabled = False
     Picture.Data = {
       07544269746D6170FA2C0000424DFA2C00000000000036000000280000001400
       0000BF0000000100180000000000C42C0000230B0000230B0000000000000000
@@ -503,11 +505,12 @@ object Form1: TForm1
       17291EFFFFFF}
   end
   object paddle2: TImage
-    Left = 992
-    Top = 200
+    Left = 1040
+    Top = 152
     Width = 20
     Height = 191
     AutoSize = True
+    Enabled = False
     Picture.Data = {
       07544269746D6170FA2C0000424DFA2C00000000000036000000280000001400
       0000BF0000000100180000000000C42C0000230B0000230B0000000000000000
@@ -871,38 +874,133 @@ object Form1: TForm1
       291E17291E17291E17291E17291E17291E17291E17291E17291E17291E17291E
       17291EFFFFFF}
   end
+  object Label1: TLabel
+    Left = 320
+    Top = 136
+    Width = 501
+    Height = 41
+    Align = alCustom
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Zagrajmy w PingPonga!'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 352
+    Top = 88
+    Width = 441
+    Height = 37
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Label2'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Visible = False
+  end
+  object Label3: TLabel
+    Left = 440
+    Top = 248
+    Width = 361
+    Height = 37
+    Alignment = taCenter
+    Caption = 'Label3'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Visible = False
+  end
+  object scoreboard: TLabel
+    Left = 448
+    Top = 200
+    Width = 161
+    Height = 37
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'scoreboard'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Visible = False
+  end
+  object Button1: TButton
+    Left = 424
+    Top = 352
+    Width = 289
+    Height = 49
+    Caption = 'Nowa gra'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 424
+    Top = 304
+    Width = 289
+    Height = 41
+    Caption = 'Nast'#281'pna rozgrywka'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clLime
+    Font.Height = -20
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    Visible = False
+    OnClick = Button2Click
+  end
   object timerBall: TTimer
+    Enabled = False
     Interval = 15
     OnTimer = timerBallTimer
-    Left = 448
-    Top = 232
+    Left = 536
+    Top = 264
   end
   object paddle1up: TTimer
     Enabled = False
     Interval = 10
     OnTimer = paddle1upTimer
-    Left = 16
-    Top = 160
+    Left = 24
+    Top = 112
   end
   object paddle1down: TTimer
     Enabled = False
     Interval = 10
     OnTimer = paddle1downTimer
-    Left = 16
-    Top = 400
+    Left = 32
+    Top = 360
   end
   object paddle2up: TTimer
     Enabled = False
     Interval = 10
     OnTimer = paddle2upTimer
-    Left = 976
-    Top = 160
+    Left = 1040
+    Top = 112
   end
   object paddle2down: TTimer
     Enabled = False
     Interval = 10
     OnTimer = paddle2downTimer
-    Left = 984
-    Top = 400
+    Left = 1048
+    Top = 352
   end
 end
