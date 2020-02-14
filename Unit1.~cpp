@@ -42,8 +42,6 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
       Label2->Caption="Punkt dla gracza prawego >";
       Label2->Visible=true;
       isFail=true;
-     // Label3->Caption="Ilosc odbic: " + IntToStr(numberOfBouncesWithPaddles);
-     // Label3->Visible=true;
    }
    //player2 fail
    if(ball->Left+ball->Width >= paddle2->Left+15)
@@ -54,11 +52,6 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
       Label2->Caption="< Punkt dla gracza lewego";
       Label2->Visible=true;
       isFail=true;
-    //  Label3->Caption="Ilosc odbic: " + IntToStr(numberOfBouncesWithPaddles);
-    //  Label3->Visible=true;
-    //  scoreboard->Caption=IntToStr(player1points)+ ":" + IntToStr(player2points);
-    //  scoreboard->Visible=true;
-
    }
    //bounce the ball with paddle1
    else if(ball->Top+ball->Height/2 > paddle1->Top && ball->Top < paddle1->Top+paddle1->Height &&
@@ -82,6 +75,8 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
       Label3->Visible=true;
       scoreboard->Caption=IntToStr(player1points)+ ":" + IntToStr(player2points);
       scoreboard->Visible=true;
+      Button1->Visible=true;
+      Button2->Visible=true;
    }
 }
 //---------------------------------------------------------------------------
@@ -127,19 +122,40 @@ void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
   timerBall->Enabled=true;
+  isFail=false;
   paddle1->Enabled=true;
   paddle2->Enabled=true;
   Button1->Visible=false;
   Label1->Visible=false;
-
-  player1points=0;
-  player2points=0;
-  numberOfBouncesWithPaddles=0;
   Label2->Visible=false;
   Label3->Visible=false;
   scoreboard->Visible=false;
+  player1points=0;
+  player2points=0;
+  numberOfBouncesWithPaddles=0;
+  ball->Top=224;
+  ball->Left=536;
+  ball->Visible=true;
 }
 //---------------------------------------------------------------------------
 
 
+
+void __fastcall TForm1::Button2Click(TObject *Sender)
+{
+  timerBall->Enabled=true;
+  isFail=false;
+  paddle1->Enabled=true;
+  paddle2->Enabled=true;
+  Button1->Visible=false;
+  Label1->Visible=false;
+  Label2->Visible=false;
+  Label3->Visible=false;
+  scoreboard->Visible=false;
+  numberOfBouncesWithPaddles=0;
+  ball->Top=224;
+  ball->Left=536;
+  ball->Visible=true;
+}
+//---------------------------------------------------------------------------
 

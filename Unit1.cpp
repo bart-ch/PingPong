@@ -126,6 +126,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   paddle1->Enabled=true;
   paddle2->Enabled=true;
   Button1->Visible=false;
+  Button2->Visible=false;
   Label1->Visible=false;
   Label2->Visible=false;
   Label3->Visible=false;
@@ -148,6 +149,7 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
   paddle1->Enabled=true;
   paddle2->Enabled=true;
   Button1->Visible=false;
+  Button2->Visible=false;
   Label1->Visible=false;
   Label2->Visible=false;
   Label3->Visible=false;

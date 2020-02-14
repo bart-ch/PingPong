@@ -923,7 +923,7 @@ object Form1: TForm1
   end
   object scoreboard: TLabel
     Left = 448
-    Top = 208
+    Top = 200
     Width = 161
     Height = 37
     Alignment = taCenter
@@ -939,7 +939,7 @@ object Form1: TForm1
   end
   object Button1: TButton
     Left = 424
-    Top = 320
+    Top = 352
     Width = 289
     Height = 49
     Caption = 'Nowa gra'
@@ -951,6 +951,22 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 0
     OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 424
+    Top = 304
+    Width = 289
+    Height = 41
+    Caption = 'Nast'#281'pna rozgrywka'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clLime
+    Font.Height = -20
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    Visible = False
+    OnClick = Button2Click
   end
   object timerBall: TTimer
     Enabled = False
