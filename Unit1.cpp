@@ -53,31 +53,31 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
       Label2->Visible=true;
       isFail=true;
    }
-   //normal bounce with paddle1
+   //bounce with paddle1
    else if(ball->Top+ball->Height/2 > paddle1->Top && ball->Top < paddle1->Top+paddle1->Height &&
    ball->Left < paddle1->Left+paddle1->Width)
    {
-       if(ballHorizontalMovement < 0) ballHorizontalMovement = - ballHorizontalMovement;
-
+       if(ballHorizontalMovement < 0)
+       {
+         ballHorizontalMovement = - ballHorizontalMovement;
+         //faster bounce
+         if(ball->Top+ball->Height/2 > paddle1->Top+paddle1->Height/2-30 &&
+         ball->Top < paddle1->Top+paddle1->Height/2+30) ballHorizontalMovement *= 1.2;
+       }
        numberOfBouncesWithPaddles++;
    }
-   //normal bounce with paddle2
+   //bounce with paddle2
    else if(ball->Top+ball->Height/2 > paddle2->Top &&
    ball->Top < paddle2->Top+paddle2->Height && ball->Left+ball->Width > paddle2->Left)
    {
-       if(ballHorizontalMovement > 0) ballHorizontalMovement = - ballHorizontalMovement;
-
+       if(ballHorizontalMovement > 0)
+       {
+         ballHorizontalMovement = - ballHorizontalMovement;
+         //faster bounce
+         if(ball->Top+ball->Height/2 > paddle2->Top+paddle1->Height/2-30 &&
+         ball->Top < paddle2->Top+paddle1->Height/2+30) ballHorizontalMovement *= 1.2;
+       }
        numberOfBouncesWithPaddles++;
-   }
-   //faster bounce with paddle1
-   else if
-   {
-
-   }
-   //faster bounce with paddle2
-   else if
-   {
-
    }
       if(isFail)
    {
@@ -97,26 +97,48 @@ void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
    if(Key == VK_DOWN) paddle2down->Enabled = true;
    if(Key == 65) paddle1up->Enabled = true;
    if(Key == 90) paddle1down->Enabled = true;
+   if(Key == VK_SPACE)
+   {
+     timerBall->Enabled=false;
+     Label4->Visible=true;
+   }
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::paddle1upTimer(TObject *Sender)
 {
- if(paddle1->Top >= background->Top+10) paddle1->Top -= 10;
+ if(paddle1->Top >= background->Top+10)
+   {
+     if(GetKeyState(VK_SPACE) & 0x8000) {}
+     else paddle1->Top -= 10;
+   }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::paddle1downTimer(TObject *Sender)
 {
-  if(paddle1->Top+paddle1->Height <= background->Height-10) paddle1->Top += 10;
+  if(paddle1->Top+paddle1->Height <= background->Height-10)
+   {
+     if(GetKeyState(VK_SPACE) & 0x8000) {}
+     else paddle1->Top += 10;
+   }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::paddle2upTimer(TObject *Sender)
 {
-   if(paddle2->Top >= background->Top+10) paddle2->Top -= 10;
+   if(paddle2->Top >= background->Top+10)
+   {
+     if(GetKeyState(VK_SPACE) & 0x8000) {}
+     else paddle2->Top -= 10;
+   }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::paddle2downTimer(TObject *Sender)
 {
-  if(paddle2->Top+paddle2->Height <= background->Height-10) paddle2->Top += 10;
+  if(paddle2->Top+paddle2->Height <= background->Height-10)
+   {
+     if(GetKeyState(VK_SPACE) & 0x8000) {}
+     else paddle2->Top += 10;
+   }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
@@ -126,27 +148,50 @@ void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
    if(Key == VK_DOWN) paddle2down->Enabled = false;
    if(Key == 65) paddle1up->Enabled = false;
    if(Key == 90) paddle1down->Enabled = false;
+   if(Key == VK_SPACE)
+   {
+     timerBall->Enabled=true;
+     Label4->Visible=false;
+   }
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
+
+  if(player1points!=0 || player2points!=0)
+  {
+    if(Application->MessageBox(
+    "Czy na pewno chcesz zacz¹æ od nowa?","PotwierdŸ",MB_YESNO | MB_ICONQUESTION) == IDYES)
+    {
+        timerBall->Enabled=true;
+        isFail=false;
+        paddle1->Enabled=true;
+        paddle2->Enabled=true;
+        Button1->Visible=false;
+        Button2->Visible=false;
+        Label1->Visible=false;
+        Label2->Visible=false;
+        Label3->Visible=false;
+        scoreboard->Visible=false;
+        player1points=0;
+        player2points=0;
+        numberOfBouncesWithPaddles=0;
+        ball->Top=224;
+        ball->Left=(paddle1->Left+paddle2->Left)/2;
+        ball->Visible=true;
+        ballHorizontalMovement = -6;
+        ballVerticalMovement = -6;
+    }
+  }
+  else
+  {
   timerBall->Enabled=true;
-  isFail=false;
   paddle1->Enabled=true;
   paddle2->Enabled=true;
   Button1->Visible=false;
-  Button2->Visible=false;
   Label1->Visible=false;
-  Label2->Visible=false;
-  Label3->Visible=false;
-  scoreboard->Visible=false;
-  player1points=0;
-  player2points=0;
-  numberOfBouncesWithPaddles=0;
-  ball->Top=224;
-  ball->Left=536;
-  ball->Visible=true;
+  }
 }
 //---------------------------------------------------------------------------
 
@@ -166,15 +211,17 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
   scoreboard->Visible=false;
   numberOfBouncesWithPaddles=0;
   ball->Top=224;
-  ball->Left=536;
+  ball->Left=(paddle1->Left+paddle2->Left)/2;
   ball->Visible=true;
+  ballHorizontalMovement = -6;
+  ballVerticalMovement = -6;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
 {
     if(Application->MessageBox(
-    "Czy na pewno chcesz zamknac program?","Potwierdz",MB_YESNO | MB_ICONQUESTION) == IDNO)
+    "Czy na pewno chcesz zamknac program?","PotwierdŸ",MB_YESNO | MB_ICONQUESTION) == IDNO)
     {
       Action = caNone;
     }
@@ -187,8 +234,9 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
     "Witaj w grze PingPong.\n\nLewy gracz steruje wciskaj¹c klawisze A i Z.\n"
     "Prawy grcz steruje wciskaj¹c strza³ki do góry i w dó³.\n\n"
     "Dla urozmaicenia zabawy:\nKiedy odbijesz pi³kê œrodkow¹ czêœci¹ paletki, "
-    "zmieni siê jej k¹t lotu i pi³ka przyœpieszy.Im d³u¿ej odbijasz, tym pi³ka szybciej przemieszcza siê.\n"
+    "zmieni siê jej k¹t lotu i pi³ka przyœpieszy. Im d³u¿ej odbijasz, tym pi³ka szybciej przemieszcza siê.\n"
     "Mo¿esz dowolnie zmieniaæ pole gry dopasowuj¹c okienko programu do swoich potrzeb.\n\n"
+    "Jeœli chcesz spauzowaæ grê - wciœnij spacjê. Puszczenie spacji wznowi rozgrywkê.\n\n"
     "Mi³ej zabawy!","PingPong",MB_OK | MB_ICONWARNING) == IDOK)
     {
       Action = caNone;

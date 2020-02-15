@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 130
-  Top = 53
+  Left = 232
+  Top = 127
   Width = 1111
   Height = 501
   Caption = 'PingPong by Bartek'
@@ -25,7 +25,7 @@ object Form1: TForm1
     Width = 1095
     Height = 462
     Align = alClient
-    Brush.Color = clMedGray
+    Brush.Color = clGray
   end
   object ball: TImage
     Left = 536
@@ -932,6 +932,20 @@ object Form1: TForm1
     Alignment = taCenter
     AutoSize = False
     Caption = 'scoreboard'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Visible = False
+  end
+  object Label4: TLabel
+    Left = 280
+    Top = 40
+    Width = 619
+    Height = 37
+    Caption = 'Gra zatrzymana. Aby wznowi'#263' pu'#347#263' spacj'#281'.'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -32

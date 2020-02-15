@@ -53,7 +53,7 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
       Label2->Visible=true;
       isFail=true;
    }
-   //bounce the ball with paddle1
+   //normal bounce with paddle1
    else if(ball->Top+ball->Height/2 > paddle1->Top && ball->Top < paddle1->Top+paddle1->Height &&
    ball->Left < paddle1->Left+paddle1->Width)
    {
@@ -61,13 +61,23 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
 
        numberOfBouncesWithPaddles++;
    }
-   //bounce the ball with paddle2
+   //normal bounce with paddle2
    else if(ball->Top+ball->Height/2 > paddle2->Top &&
    ball->Top < paddle2->Top+paddle2->Height && ball->Left+ball->Width > paddle2->Left)
    {
        if(ballHorizontalMovement > 0) ballHorizontalMovement = - ballHorizontalMovement;
 
        numberOfBouncesWithPaddles++;
+   }
+   //faster bounce with paddle1
+   else if
+   {
+
+   }
+   //faster bounce with paddle2
+   else if
+   {
+
    }
       if(isFail)
    {
@@ -177,9 +187,9 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
     "Witaj w grze PingPong.\n\nLewy gracz steruje wciskaj¹c klawisze A i Z.\n"
     "Prawy grcz steruje wciskaj¹c strza³ki do góry i w dó³.\n\n"
     "Dla urozmaicenia zabawy:\nKiedy odbijesz pi³kê œrodkow¹ czêœci¹ paletki, "
-    "zmieni siê jej k¹t lotu i pi³ka przyœpieszy.\nIm d³u¿ej odbijasz, tym pi³ka szybciej przemieszcza siê.\n"
+    "zmieni siê jej k¹t lotu i pi³ka przyœpieszy.Im d³u¿ej odbijasz, tym pi³ka szybciej przemieszcza siê.\n"
     "Mo¿esz dowolnie zmieniaæ pole gry dopasowuj¹c okienko programu do swoich potrzeb.\n\n"
-    "Mi³ej zabawy!","PingPong",MB_OK | MB_ICONQUESTION) == IDOK)
+    "Mi³ej zabawy!","PingPong",MB_OK | MB_ICONWARNING) == IDOK)
     {
       Action = caNone;
     }
