@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 201
-  Top = 147
-  Width = 1114
+  Left = 130
+  Top = 53
+  Width = 1111
   Height = 501
   Caption = 'PingPong by Bartek'
   Color = clBtnFace
@@ -13,6 +13,8 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyUp = FormKeyUp
   PixelsPerInch = 96
@@ -20,7 +22,7 @@ object Form1: TForm1
   object background: TShape
     Left = 0
     Top = 0
-    Width = 1098
+    Width = 1095
     Height = 462
     Align = alClient
     Brush.Color = clMedGray
@@ -875,8 +877,8 @@ object Form1: TForm1
       17291EFFFFFF}
   end
   object Label1: TLabel
-    Left = 320
-    Top = 136
+    Left = 328
+    Top = 104
     Width = 501
     Height = 41
     Align = alCustom
@@ -892,7 +894,7 @@ object Form1: TForm1
   end
   object Label2: TLabel
     Left = 352
-    Top = 88
+    Top = 152
     Width = 441
     Height = 37
     Alignment = taCenter
@@ -907,11 +909,12 @@ object Form1: TForm1
     Visible = False
   end
   object Label3: TLabel
-    Left = 440
-    Top = 248
-    Width = 361
+    Left = 456
+    Top = 256
+    Width = 225
     Height = 37
     Alignment = taCenter
+    AutoSize = False
     Caption = 'Label3'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -922,7 +925,7 @@ object Form1: TForm1
     Visible = False
   end
   object scoreboard: TLabel
-    Left = 448
+    Left = 488
     Top = 200
     Width = 161
     Height = 37
@@ -957,8 +960,8 @@ object Form1: TForm1
     Top = 304
     Width = 289
     Height = 41
-    Caption = 'Nast'#281'pna rozgrywka'
-    Font.Charset = DEFAULT_CHARSET
+    Caption = 'Nast'#281'pna rozgrywka >'
+    Font.Charset = EASTEUROPE_CHARSET
     Font.Color = clLime
     Font.Height = -20
     Font.Name = 'MS Sans Serif'

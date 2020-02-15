@@ -161,3 +161,28 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
+{
+    if(Application->MessageBox(
+    "Czy na pewno chcesz zamknac program?","Potwierdz",MB_YESNO | MB_ICONQUESTION) == IDNO)
+    {
+      Action = caNone;
+    }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+          if(Application->MessageBox(
+    "Witaj w grze PingPong.\n\nLewy gracz steruje wciskaj¹c klawisze A i Z.\n"
+    "Prawy grcz steruje wciskaj¹c strza³ki do góry i w dó³.\n\n"
+    "Dla urozmaicenia zabawy:\nKiedy odbijesz pi³kê œrodkow¹ czêœci¹ paletki, "
+    "zmieni siê jej k¹t lotu i pi³ka przyœpieszy.\nIm d³u¿ej odbijasz, tym pi³ka szybciej przemieszcza siê.\n"
+    "Mo¿esz dowolnie zmieniaæ pole gry dopasowuj¹c okienko programu do swoich potrzeb.\n\n"
+    "Mi³ej zabawy!","PingPong",MB_OK | MB_ICONQUESTION) == IDOK)
+    {
+      Action = caNone;
+    }
+}
+//---------------------------------------------------------------------------
+

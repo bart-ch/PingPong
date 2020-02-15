@@ -126,6 +126,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
   paddle1->Enabled=true;
   paddle2->Enabled=true;
   Button1->Visible=false;
+  Button2->Visible=false;
   Label1->Visible=false;
   Label2->Visible=false;
   Label3->Visible=false;
@@ -148,6 +149,7 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
   paddle1->Enabled=true;
   paddle2->Enabled=true;
   Button1->Visible=false;
+  Button2->Visible=false;
   Label1->Visible=false;
   Label2->Visible=false;
   Label3->Visible=false;
@@ -156,6 +158,16 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
   ball->Top=224;
   ball->Left=536;
   ball->Visible=true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
+{
+    if(Application->MessageBox(
+    "Czy na pewno chcesz zamknac program?","Potwierdz",MB_YESNO | MB_ICONQUESTION) == IDNO)
+    {
+      Action = caNone;
+    }
 }
 //---------------------------------------------------------------------------
 
