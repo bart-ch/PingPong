@@ -4,6 +4,8 @@
 #pragma hdrstop
 
 #include "Unit1.h"
+#include "mmsystem.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -12,10 +14,10 @@ TForm1 *Form1;
 int ballHorizontalMovement = -6;
 int ballVerticalMovement = -6;
 
-int numberOfBouncesWithPaddles=0;
-int player1points=0;
-int player2points=0;
-bool isFail=false;
+int numberOfBouncesWithPaddles = 0;
+int player1points = 0;
+int player2points = 0;
+bool isFail = false;
 
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
@@ -65,6 +67,7 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
          ball->Top < paddle1->Top+paddle1->Height/2+30) ballHorizontalMovement *= 1.2;
        }
        numberOfBouncesWithPaddles++;
+       PlaySound(TEXT("snd/pingPong.wav"), NULL, SND_FILENAME | SND_ASYNC);
    }
    //bounce with paddle2
    else if(ball->Top+ball->Height/2 > paddle2->Top &&
@@ -78,6 +81,7 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
          ball->Top < paddle2->Top+paddle1->Height/2+30) ballHorizontalMovement *= 1.2;
        }
        numberOfBouncesWithPaddles++;
+       PlaySound(TEXT("snd/pingPong.wav"), NULL, SND_FILENAME | SND_ASYNC);
    }
       if(isFail)
    {
@@ -182,15 +186,23 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
         ball->Visible=true;
         ballHorizontalMovement = -6;
         ballVerticalMovement = -6;
+        paddle1->Top = background->Height/2 - paddle1->Height/2;
+        paddle2->Top = background->Height/2 - paddle2->Height/2;
+        paddle1->Left = background->Left+30;
+        paddle2->Left = background->Width-50;
     }
   }
   else
   {
-  timerBall->Enabled=true;
-  paddle1->Enabled=true;
-  paddle2->Enabled=true;
-  Button1->Visible=false;
-  Label1->Visible=false;
+    timerBall->Enabled=true;
+    paddle1->Enabled=true;
+    paddle2->Enabled=true;
+    Button1->Visible=false;
+    Label1->Visible=false;
+    paddle1->Top = background->Height/2 - paddle1->Height/2;
+    paddle2->Top = background->Height/2 - paddle2->Height/2;
+    paddle1->Left = background->Left+30;
+    paddle2->Left = background->Width-50;
   }
 }
 //---------------------------------------------------------------------------
@@ -215,6 +227,10 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
   ball->Visible=true;
   ballHorizontalMovement = -6;
   ballVerticalMovement = -6;
+  paddle1->Top = background->Height/2 - paddle1->Height/2;
+  paddle2->Top = background->Height/2 - paddle2->Height/2;
+  paddle1->Left = background->Left+30;
+  paddle2->Left = background->Width-50;
 }
 //---------------------------------------------------------------------------
 

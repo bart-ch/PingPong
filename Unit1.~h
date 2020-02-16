@@ -13,7 +13,6 @@
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
-        TShape *background;
         TImage *ball;
         TImage *paddle1;
         TImage *paddle2;
@@ -21,13 +20,15 @@ __published:	// IDE-managed Components
         TTimer *paddle1up;
         TTimer *paddle1down;
         TTimer *paddle2up;
-        TTimer *paddle2down;
         TLabel *Label1;
         TButton *Button1;
         TLabel *Label2;
         TLabel *Label3;
         TLabel *scoreboard;
         TButton *Button2;
+        TTimer *paddle2down;
+        TShape *background;
+        TLabel *Label4;
         void __fastcall timerBallTimer(TObject *Sender);
         void __fastcall FormKeyDown(TObject *Sender, WORD &Key,
           TShiftState Shift);
