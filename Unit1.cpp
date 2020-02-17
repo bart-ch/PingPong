@@ -36,7 +36,7 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
    //bounce from the bottom
    if(ball->Top+ball->Height+5 >= background->Height) ballVerticalMovement = -ballVerticalMovement;
    //player1 fail
-   if(ball->Left <= paddle1->Left-15)
+   if(ball->Left <= paddle1->Left-20)
    {
       timerBall->Enabled=false;
       ball->Visible=false;
@@ -46,7 +46,7 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
       isFail=true;
    }
    //player2 fail
-   if(ball->Left+ball->Width >= paddle2->Left+15)
+   if(ball->Left+ball->Width >= paddle2->Left+20)
    {
       timerBall->Enabled=false;
       ball->Visible=false;
@@ -91,6 +91,9 @@ void __fastcall TForm1::timerBallTimer(TObject *Sender)
       scoreboard->Visible=true;
       Button1->Visible=true;
       Button2->Visible=true;
+      PlaySound(TEXT("snd/fail.wav"), NULL, SND_FILENAME | SND_ASYNC);
+      Sleep(1000);
+      PlaySound(TEXT("snd/backgroundMusic.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
    }
 }
 //---------------------------------------------------------------------------
@@ -190,6 +193,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
         paddle2->Top = background->Height/2 - paddle2->Height/2;
         paddle1->Left = background->Left+30;
         paddle2->Left = background->Width-50;
+        PlaySound(TEXT("snd/fight.wav"), NULL, SND_FILENAME | SND_ASYNC);
     }
   }
   else
@@ -203,6 +207,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
     paddle2->Top = background->Height/2 - paddle2->Height/2;
     paddle1->Left = background->Left+30;
     paddle2->Left = background->Width-50;
+    PlaySound(TEXT("snd/fight.wav"), NULL, SND_FILENAME | SND_ASYNC);
   }
 }
 //---------------------------------------------------------------------------
@@ -231,13 +236,14 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
   paddle2->Top = background->Height/2 - paddle2->Height/2;
   paddle1->Left = background->Left+30;
   paddle2->Left = background->Width-50;
+  PlaySound(TEXT("snd/fight.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
 {
     if(Application->MessageBox(
-    "Czy na pewno chcesz zamknac program?","Potwierdü",MB_YESNO | MB_ICONQUESTION) == IDNO)
+    "Czy na pewno chcesz zamknπÊ program?","Potwierdü",MB_YESNO | MB_ICONQUESTION) == IDNO)
     {
       Action = caNone;
     }
@@ -257,6 +263,8 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
     {
       Action = caNone;
     }
+
+    PlaySound(TEXT("snd/backgroundMusic.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 }
 //---------------------------------------------------------------------------
 

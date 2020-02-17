@@ -25,7 +25,7 @@ object Form1: TForm1
     Width = 1095
     Height = 462
     Align = alClient
-    Brush.Color = clGray
+    Brush.Color = clSilver
   end
   object ball: TImage
     Left = 536
@@ -893,7 +893,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 352
+    Left = 344
     Top = 152
     Width = 441
     Height = 37
@@ -910,7 +910,7 @@ object Form1: TForm1
   end
   object Label3: TLabel
     Left = 456
-    Top = 256
+    Top = 248
     Width = 225
     Height = 37
     Alignment = taCenter
@@ -928,7 +928,7 @@ object Form1: TForm1
     Left = 488
     Top = 200
     Width = 161
-    Height = 37
+    Height = 41
     Alignment = taCenter
     AutoSize = False
     Caption = 'scoreboard'
@@ -956,7 +956,7 @@ object Form1: TForm1
   end
   object Button1: TButton
     Left = 424
-    Top = 352
+    Top = 344
     Width = 289
     Height = 49
     Caption = 'Nowa gra'
@@ -971,7 +971,7 @@ object Form1: TForm1
   end
   object Button2: TButton
     Left = 424
-    Top = 304
+    Top = 296
     Width = 289
     Height = 41
     Caption = 'Nast'#281'pna rozgrywka >'
